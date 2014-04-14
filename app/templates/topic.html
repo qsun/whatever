@@ -6,5 +6,24 @@
     <pre>{{ topic.description }}</pre>
 
     <hr />
+
+    <form action="{{ url_for('append_comment_page', topic_id=topic.id) }}" method="post">
+        <div class="form-group">
+            <label for="comment">你的见解</label>
+            <textarea rows="5" class="form-control" name="comment"></textarea>
+        </div>
+
+        <input value="评论" type="submit" class="btn btn-primary" />
+    </form>
+
+    <hr />
+
+    {% for comment in topic.comments %}
+    <div class="row">
+        <div class="col-md-12">
+            <pre>{{ comment.description }}</pre>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

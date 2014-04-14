@@ -30,3 +30,13 @@ def topic_page(topic_id):
         return render_template('topic.html', topic=topic)
     else:
         return 'Page not found', 404
+
+
+@app.route('/topics/<int:topic_id>', methods=["POST"])
+def append_comment_page(topic_id):
+    comment = request.form['comment']
+    topic = Topic.find_by_id(topic_id)
+    if topic:
+        topic.append_comment(comment)
+        return redirect(url_for('topic_page', topic_id=topic.id))
+    return 'Page not found', 404
