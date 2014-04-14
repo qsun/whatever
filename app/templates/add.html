@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>增加讨论</h1>
+
+  <form action="/create" method="post">
+      <div class="form-group">
+          <label for="title">标题</label>
+          <input class="form-control" type="text" name="title" id="title" />
+      </div>
+
+      <div class="form-group">
+          <label for="description">描述</label>
+          <textarea rows="5" class="form-control" name="description">你的讨论有什么价值？</textarea>
+      </div>
+
+      <input type="submit" value="提交" class="btn btn-primary" />
+ </form>
+</div>
+{% endblock %}
